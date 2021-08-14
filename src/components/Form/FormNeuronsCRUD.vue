@@ -1,6 +1,10 @@
 <template>
   <form class="form" @submit.prevent>
     <div class="form-control">
+      <BaseButton>Удалить</BaseButton>
+      <BaseButton>Редактировать</BaseButton>
+    </div>
+    <div class="form-control">
       <h2>Параметры датасета</h2>
       <BaseInput type="text" placeholder="Название датасета" />
       <BaseInput type="text" placeholder="Теги" />
