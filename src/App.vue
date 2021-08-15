@@ -1,15 +1,9 @@
 <template>
   <div>
-    <Modal :show="this.$store.state.showModalNeuronsCRUD">
-      <template v-slot:header> Форма </template>
+    <Modal :show="this.$store.state.showModalNeurons">
+      <template v-slot:header> <h3>Добавление датасета</h3> </template>
       <template v-slot:content>
-        <FormNeuronsCRUD />
-      </template>
-    </Modal>
-    <Modal :show="this.$store.state.showModalTagsCRUD">
-      <template v-slot:header> Форма </template>
-      <template v-slot:content>
-        <FormTagsCRUD />
+        <FormNeurons />
       </template>
     </Modal>
     <TheNavbar />
@@ -19,15 +13,13 @@
 <script>
 import TheNavbar from "@/components/TheNavbar";
 import Modal from "@/components/Modal";
-import FormNeuronsCRUD from "@/components/Form/FormNeuronsCRUD";
-import FormTagsCRUD from "@/components/Form/FormTagsCRUD";
+import FormNeurons from "@/components/Form/FormNeurons";
 export default {
   name: "App",
   components: {
     TheNavbar,
     Modal,
-    FormNeuronsCRUD,
-    FormTagsCRUD,
+    FormNeurons,
   },
 };
 </script>

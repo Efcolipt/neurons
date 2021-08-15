@@ -2,11 +2,11 @@
   <div class="container">
     <section>
       <h3>Теги</h3>
-      <Tag :tags="$store.state.tags.data" />
+      <Tag :tags="$store.state.tags" />
     </section>
     <section>
-      <h3>Выберите датасет</h3>
-      <Neurons :neurons="$store.state.neurons.data" />
+      <h3>Датасеты</h3>
+      <Neurons :neurons="$store.getters.SortByTags" />
     </section>
   </div>
 </template>
