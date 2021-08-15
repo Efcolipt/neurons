@@ -1,24 +1,50 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import neurons from "@/store/modules/neurons";
-import tags from "@/store/modules/tags";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    showModalNeuronsCRUD: false,
-    showModalTagsCRUD: false,
+    showModalNeurons: false,
+    tags: [],
+    neurons: [],
+    sortTags: [],
   },
   mutations: {
-    setShowModalNeuronsCRUD(state, val) {
-      state.showModalNeuronsCRUD = val;
+    setShowModalNeurons(state, val) {
+      state.showModalNeurons = val;
     },
-    setShowModalTagsCRUD(state, val) {
-      state.showModalTagsCRUD = val;
+    setTags(state, tags) {
+      state.tags = [...new Set([...state.tags, ...tags])];
+    },
+    setNeuron(state, neuron) {
+      state.neurons.push(neuron);
+    },
+    AddSortTags(state, tag) {
+      state.sortTags = [...new Set([...state.sortTags, tag])];
+    },
+    RemoveSortTags(state, tag) {
+      state.sortTags = state.sortTags.filter((el) => el.localeCompare(tag));
     },
   },
-  modules: {
-    tags,
-    neurons,
+  actions: {
+    AddNeuron({ commit }, neuron) {
+      neuron.id = Date.now();
+      neuron.tags = [...new Set(neuron.tags.split(","))];
+
+      commit("setNeuron", neuron);
+      commit("setTags", neuron.tags);
+    },
+  },
+  getters: {
+    SortByTags: (state) => {
+      if (!(state.sortTags.length > 0)) return state.neurons;
+      return state.neurons.filter((el) => {
+        for (let i = 0; el.tags.length > i; i++){
+          if (state.sortTags.includes(el.tags[i])) return true;
+        }
+          
+        return false;
+      });
+    },
   },
 });
