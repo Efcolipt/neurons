@@ -1,24 +1,7 @@
-# neuron
+# Build
 
-## Project setup
-```
-npm install
-```
+Looking for build in dir dist, then start index.html
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+# Install
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+After Download, start `npm install`, then start `npm serve`
