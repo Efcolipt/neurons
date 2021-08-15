@@ -20,3 +20,19 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #1e2b38;
+  padding: 25px;
+  border-radius: 5px;
+  width: 420px;
+}
+.modal-header {
+  margin-bottom: 20px;
+}
+</style>
