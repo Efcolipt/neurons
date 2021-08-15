@@ -1,6 +1,11 @@
 <template>
-  <div class="neuron">
-    <NeuronItem v-for="item in neurons" :key="item.name" :neuron="item" />
+  <div class="neurons" v-if="neurons.length > 0">
+    <div class="row grid">
+      <NeuronItem v-for="item in neurons" :key="item.id" :neuron="item" />
+    </div>
+  </div>
+  <div v-else>
+    <p class="empty">Пока ничего тут нет :)</p>
   </div>
 </template>
 
@@ -13,8 +18,8 @@ export default {
   },
   props: {
     neurons: {
-      type: Object,
-      default: () => {},
+      type: Array,
+      default: () => [],
     },
   },
 };
