@@ -29,7 +29,7 @@ export default new Vuex.Store({
   actions: {
     AddNeuron({ commit }, neuron) {
       neuron.id = Date.now();
-      neuron.tags = [...new Set(neuron.tags.split(","))];
+      neuron.tags = [...new Set(neuron.tags.split(","))].filter(Boolean);
 
       commit("setNeuron", neuron);
       commit("setTags", neuron.tags);
@@ -39,10 +39,10 @@ export default new Vuex.Store({
     SortByTags: (state) => {
       if (!(state.sortTags.length > 0)) return state.neurons;
       return state.neurons.filter((el) => {
-        for (let i = 0; el.tags.length > i; i++){
+        for (let i = 0; el.tags.length > i; i++) {
           if (state.sortTags.includes(el.tags[i])) return true;
         }
-          
+
         return false;
       });
     },
