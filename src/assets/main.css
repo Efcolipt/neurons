@@ -50,7 +50,7 @@ section {
 .grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
-	grid-gap: 2em;
+	grid-gap: 5em 6em;
 	grid-auto-flow: dense;
 }
 .flex {

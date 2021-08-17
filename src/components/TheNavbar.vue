@@ -1,14 +1,6 @@
 <template>
   <header>
-    <div class="header-box">
-      <BaseButton
-        @click.native="
-          $store.commit('setShowModalNeurons', !$store.state.showModalNeurons)
-        "
-      >
-        + Датасет
-      </BaseButton>
-    </div>
+    <slot></slot>
   </header>
 </template>
 
@@ -20,6 +12,7 @@ export default {
 <style scoped>
 header {
   position: absolute;
+  z-index: 30;
   left: 0;
   bottom: 0;
   top: 0;

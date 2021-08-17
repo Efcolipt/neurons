@@ -1,6 +1,9 @@
 <template>
   <div class="neuron-item">
-    <h3>{{ neuron.name }}</h3>
+    <h3>
+      <span>{{ neuron.name }}</span>
+      <span @click="$store.dispatch('DeleteNeuron', neuron.id)">&times;</span>
+    </h3>
     <div class="neuron-tags">
       <span
         class="item-neuron-tags"
@@ -11,7 +14,9 @@
       </span>
     </div>
     <div class="neuron-memory">
-      <span>{{ neuron.memory || "предустановленный" }}</span>
+      <span>
+        {{ neuron.memory ? `${neuron.memory} MB` : "предустановленный" }}
+      </span>
     </div>
   </div>
 </template>
@@ -30,6 +35,17 @@ export default {
 <style scoped>
 .neuron-item h3 {
   margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.neuron-item h3 span:last-child {
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.3s ease-in;
+}
+.neuron-item h3 span:last-child:hover {
+  color: #a7bdd3;
 }
 
 .item-neuron-tags {

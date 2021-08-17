@@ -16,6 +16,9 @@ export default new Vuex.Store({
     setTags(state, tags) {
       state.tags = [...new Set([...state.tags, ...tags])];
     },
+    setNeurons(state, neurons) {
+      state.neurons = neurons;
+    },
     setNeuron(state, neuron) {
       state.neurons.push(neuron);
     },
@@ -23,7 +26,9 @@ export default new Vuex.Store({
       state.sortTags = [...new Set([...state.sortTags, tag])];
     },
     RemoveSortTags(state, tag) {
-      state.sortTags = state.sortTags.filter((el) => el.localeCompare(tag));
+      state.sortTags = state.sortTags.filter(
+        (el) => !(el.localeCompare(tag) === 0)
+      );
     },
   },
   actions: {
@@ -33,6 +38,10 @@ export default new Vuex.Store({
 
       commit("setNeuron", neuron);
       commit("setTags", neuron.tags);
+    },
+    DeleteNeuron({ state, commit }, id) {
+      const neurons = state.neurons.filter((el) => el.id !== id);
+      commit("setNeurons", neurons);
     },
   },
   getters: {

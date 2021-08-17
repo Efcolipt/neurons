@@ -23,6 +23,6 @@ export default {
 }
 
 .btn:hover {
-  background: #304254;
+  background: #304254 !important;
 }
 </style>

@@ -4,8 +4,7 @@
       <TagItem
         v-for="tag in tags"
         :key="tag"
-        :ref="`item${tag}`"
-        @click.native="addSortTags(tag)"
+        @click.native="addSortTags($event, tag)"
       >
         {{ tag }}
       </TagItem>
@@ -30,14 +29,18 @@ export default {
     },
   },
   methods: {
-    addSortTags(tag) {
-      const a = `item${tag}`;
-      if (!(this.$refs[a][0].$el.className.indexOf("tag-item--active") > -1)) {
+    addSortTags(event, tag) {
+      const $el =
+        event.target.tagName === "SPAN"
+          ? event.target.parentNode
+          : event.target;
+
+      if (!$el.classList.contains("tag-item--active")) {
         this.$store.commit("AddSortTags", tag);
       } else {
         this.$store.commit("RemoveSortTags", tag);
       }
-      this.$refs[a][0].$el.classList.toggle("tag-item--active");
+      $el.classList.toggle("tag-item--active");
     },
   },
 };
